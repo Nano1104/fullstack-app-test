@@ -14,7 +14,7 @@ const Login = () => {
     return(
         <>
         <div className="flex flex-col items-center justify-center">
-        <h1 class="text-center text-4xl font-bold text-white">Login Page</h1>
+        <h1 className="text-center text-4xl font-bold text-white">Login Page</h1>
 
             <form action="" className="flex gap-5" onSubmit={handleSubmit}>
                 <input type="text" className="border border-slate-800 rounded-md py-1 px-2 my-4" placeholder="Write your username" required

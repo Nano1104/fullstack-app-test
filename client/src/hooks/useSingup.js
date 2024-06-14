@@ -1,12 +1,12 @@
 import axios from "axios";
-import { useAuthContext } from "../context/AuthContext.jsx";
+
+const apiUrl = import.meta.env.VITE_PROD_SERVER_URL;
 
 const useSignup = () => {
-    const { setAuthUser }  = useAuthContext();
 
     const signUp = async ({ username, email, password }) => {
         try {
-            const res = await axios.post("/api/register", { username, email, password });
+            const res = await axios.post(`${apiUrl}/api/register`, { username, email, password });
             const data = res.data; 
 
             console.log(data);
