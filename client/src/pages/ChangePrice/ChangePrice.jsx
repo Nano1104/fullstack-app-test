@@ -1,10 +1,12 @@
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_PROD_SERVER_URL;
+
 const ChangePrice = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.put("/api/user/changePrice");
+        const res = await axios.put(`${apiUrl}/api/user/changePrice`, { withCredentials: true });
         const data = res.data;
         if(!data) return alert("Cannot changed products price");
          

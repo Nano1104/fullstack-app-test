@@ -8,7 +8,7 @@ const useLogin = () => {
     console.log(apiUrl)
     const singIn = async ({ username, password }) => {
         try {
-            const res = await axios.post(`${apiUrl}/api/login`, { username, password });
+            const res = await axios.post(`${apiUrl}/api/login`, { username, password }, { withCredentials: true });
             const data = res.data; 
 
             sessionStorage.setItem("user", JSON.stringify(data.userFound));

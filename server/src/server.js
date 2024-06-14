@@ -15,8 +15,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 app.use(cors({
-    origin: "http://localhost:5173"
-}));
+    origin: 'https://fullstack-app-test-gules.vercel.app/',
+    credentials: true, // Permitir credenciales (cookies)
+  }));
 app.use(cookieParser());
 
 app.use("/api/", authRouter)

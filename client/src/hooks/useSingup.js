@@ -6,7 +6,7 @@ const useSignup = () => {
 
     const signUp = async ({ username, email, password }) => {
         try {
-            const res = await axios.post(`${apiUrl}/api/register`, { username, email, password });
+            const res = await axios.post(`${apiUrl}/api/register`, { username, email, password }, { withCredentials: true });
             const data = res.data; 
 
             console.log(data);
