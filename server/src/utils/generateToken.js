@@ -7,8 +7,8 @@ const generateTokenAndSetCookie = (userId, res) => {
 
     res.cookie('token', token, {
         httpOnly: true,
-        secure: true, // Asegúrate de que está habilitado para HTTPS
-        sameSite: 'None', // Para permitir el envío de cookies entre sitios
+        secure: false, // Asegúrate de que está habilitado para HTTPS
+        sameSite: 'Strict', // Para permitir el envío de cookies entre sitios
         maxAge: 24 * 60 * 60 * 1000, // 1 día
     });
 }
