@@ -7,8 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000"  // URL del servidor backend en desarrollo
-      }
-    }
-  }
+        target: process.env.VITE_API_URL || "http://localhost:5000",
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
 })
