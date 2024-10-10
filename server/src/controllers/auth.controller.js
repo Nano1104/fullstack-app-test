@@ -3,7 +3,7 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
     try {
-        const { username, role } = req.body;
+        const { username, email, role } = req.body;
         
         const user = await User.findOne({ username: username });
         

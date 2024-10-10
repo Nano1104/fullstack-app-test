@@ -5,11 +5,12 @@ const apiUrl = import.meta.env.VITE_PROD_SERVER_URL;
 
 const useLogin = () => {
     const { setAuthUser }  = useAuthContext();
-    console.log(apiUrl)
+   
     const singIn = async ({ username, password }) => {
         try {
             const res = await axios.post(`${apiUrl}/api/login`, { username, password }, { withCredentials: true });
             const data = res.data; 
+            console.log("🚀 ~ singIn ~ data:", data)
 
             sessionStorage.setItem("user", JSON.stringify(data.userFound));
             setAuthUser(() => {

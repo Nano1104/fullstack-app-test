@@ -9,16 +9,33 @@ import { PORT } from "./config/envConfig.js";
 import authRouter from "./routes/auth.router.js";
 import prodRouter from "./routes/products.router.js";
 import userRouter from "./routes/user.router.js";
-
-
 const app = express();
+/* const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+          ? 'https://fullstack-app-test-gules.vercel.app/' 
+          : 'http://localhost:5173',  // Origen según el entorno
+  credentials: true,  // Permitir credenciales (cookies)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}; */
+/* const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true,  
+}
+console.log(corsOptions.origin) */
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}))
 app.use(cors({
-    origin: 'https://fullstack-app-test-gules.vercel.app/',
-    credentials: true, // Permitir credenciales (cookies)
-  }));
+  origin: process.env.NODE_ENV === 'production' 
+          ? 'https://fullstack-app-test-gules.vercel.app/' 
+          : 'http://localhost:5173', 
+  credentials: true
+}));
 app.use(cookieParser());
+
 
 app.use("/api/", authRouter)
 app.use("/api/products", prodRouter)
