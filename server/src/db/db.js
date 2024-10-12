@@ -10,4 +10,21 @@ const connectDB = async () => {
     }
 }
 
+const startKeepAlive = () => {
+    // Verificar si la conexión está lista antes de enviar el ping
+    mongoose.connection.on('open', () => {
+        console.log('Conexión establecida, iniciando keep-alive...');
+        setInterval(() => {
+            mongoose.connection.db.admin().ping((err, result) => {
+                if (err) {
+                    console.error('Error al enviar ping:', err);
+                } else {
+                    console.log('Ping a MongoDB exitoso:', result);
+                }
+            });
+        }, 60 * 60 * 1000); // Cada hora
+    });
+};
+
 export default connectDB;
+
